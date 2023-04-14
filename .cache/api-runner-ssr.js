@@ -1,14 +1,14 @@
 var plugins = [{
       name: 'gatsby-plugin-image',
-      plugin: require('/Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-plugin-image/gatsby-ssr.js'),
+      plugin: require('/Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-plugin-image/gatsby-ssr.js'),
       options: {"plugins":[]},
     },{
       name: 'gatsby-plugin-sitemap',
-      plugin: require('/Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-plugin-sitemap/gatsby-ssr.js'),
+      plugin: require('/Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-plugin-sitemap/gatsby-ssr.js'),
       options: {"plugins":[],"output":"/","createLinkInHead":true,"entryLimit":45000,"query":"{ site { siteMetadata { siteUrl } } allSitePage { nodes { path } } }","excludes":[]},
     },{
       name: 'partytown',
-      plugin: require('/Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby/dist/internal-plugins/partytown/gatsby-ssr.js'),
+      plugin: require('/Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby/dist/internal-plugins/partytown/gatsby-ssr.js'),
       options: {"plugins":[]},
     }]
 /* global plugins */

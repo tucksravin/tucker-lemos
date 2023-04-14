@@ -1,4 +1,4 @@
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFixed on ImageSharpFixed {
   base64
   width
@@ -6,7 +6,7 @@ fragment GatsbyImageSharpFixed on ImageSharpFixed {
   src
   srcSet
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFixed_tracedSVG on ImageSharpFixed {
   tracedSVG
   width
@@ -14,7 +14,7 @@ fragment GatsbyImageSharpFixed_tracedSVG on ImageSharpFixed {
   src
   srcSet
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFixed_withWebp on ImageSharpFixed {
   base64
   width
@@ -24,7 +24,7 @@ fragment GatsbyImageSharpFixed_withWebp on ImageSharpFixed {
   srcWebp
   srcSetWebp
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFixed_withWebp_tracedSVG on ImageSharpFixed {
   tracedSVG
   width
@@ -34,14 +34,14 @@ fragment GatsbyImageSharpFixed_withWebp_tracedSVG on ImageSharpFixed {
   srcWebp
   srcSetWebp
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFixed_noBase64 on ImageSharpFixed {
   width
   height
   src
   srcSet
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFixed_withWebp_noBase64 on ImageSharpFixed {
   width
   height
@@ -50,7 +50,7 @@ fragment GatsbyImageSharpFixed_withWebp_noBase64 on ImageSharpFixed {
   srcWebp
   srcSetWebp
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFluid on ImageSharpFluid {
   base64
   aspectRatio
@@ -58,12 +58,12 @@ fragment GatsbyImageSharpFluid on ImageSharpFluid {
   srcSet
   sizes
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFluidLimitPresentationSize on ImageSharpFluid {
   maxHeight: presentationHeight
   maxWidth: presentationWidth
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFluid_tracedSVG on ImageSharpFluid {
   tracedSVG
   aspectRatio
@@ -71,7 +71,7 @@ fragment GatsbyImageSharpFluid_tracedSVG on ImageSharpFluid {
   srcSet
   sizes
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFluid_withWebp on ImageSharpFluid {
   base64
   aspectRatio
@@ -81,7 +81,7 @@ fragment GatsbyImageSharpFluid_withWebp on ImageSharpFluid {
   srcSetWebp
   sizes
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFluid_withWebp_tracedSVG on ImageSharpFluid {
   tracedSVG
   aspectRatio
@@ -91,14 +91,14 @@ fragment GatsbyImageSharpFluid_withWebp_tracedSVG on ImageSharpFluid {
   srcSetWebp
   sizes
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFluid_noBase64 on ImageSharpFluid {
   aspectRatio
   src
   srcSet
   sizes
 }
-# /Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
+# /Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/gatsby-transformer-sharp/src/fragments.js
 fragment GatsbyImageSharpFluid_withWebp_noBase64 on ImageSharpFluid {
   aspectRatio
   src

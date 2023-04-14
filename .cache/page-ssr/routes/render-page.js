@@ -12336,24 +12336,24 @@ if (false) {} else {
 /***/ }),
 
 /***/ "react-dom/server":
-/*!************************************************************************************************!*\
-  !*** external "/Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/react-dom/server.js" ***!
-  \************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** external "/Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/react-dom/server.js" ***!
+  \****************************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("/Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/react-dom/server.js");
+module.exports = require("/Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/react-dom/server.js");
 
 /***/ }),
 
 /***/ "react":
-/*!*******************************************************************************************!*\
-  !*** external "/Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/react/index.js" ***!
-  \*******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** external "/Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/react/index.js" ***!
+  \***********************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("/Users/lemost1/Documents/GitHub/tucker-lemos/node_modules/react/index.js");
+module.exports = require("/Users/tuckerlemos/Documents/GitHub/tucker-lemos/node_modules/react/index.js");
 
 /***/ }),
 
