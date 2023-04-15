@@ -1,17 +1,6 @@
 import { graphql} from 'gatsby'
 import * as React from 'react'
 
-interface AllSheets {
-    sheets: {
-        data: {
-            bg_color: string, 
-        i_am: {text: string}, 
-        primary_color: string, 
-        secondary_color: string, 
-        sheet_name: {text: string}
-        }
-    }[]
-}
 
 const SheetList: React.FC<AllSheets> = ({sheets}) => { 
 

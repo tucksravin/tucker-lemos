@@ -15,6 +15,12 @@ const wRef = useRef()
 
 const dRef = useRef()
 
+//generate an array of all the sheets
+
+data.allPrismicPag.nodes.map(
+  
+)
+
 
 
   return (
