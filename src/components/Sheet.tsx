@@ -4,28 +4,32 @@ import { useSpring, animated } from 'react-spring'
 import '../styles/global.css'
 
 
+
 //start with just left
 
 //props: tW for classes to add to tailwind, side for where it lives offscreen
 
-function Page(props, ref){
+function Sheet(props: SheetProps, ref: React.Ref<any>){
 
-    const [active, toggleActive] = useState(true)
+  const [active, toggleActive] = useState(true)
 
-    const { height, width } = useWindowDimensions()
+  const { height, width } = useWindowDimensions()
 
     useImperativeHandle(ref, () => ({
       toggleFromLanding(){
-        toggleActive()
+        toggleActive(!active)
       }
     }),[])
 
-    let pagePosPreSpring
-    let backBarPos
-    let arrowTx
+    let sheetPosPreSpring: AbsPosition = {
+      left: 0,
+      top: 0
+    }
+    let backBarPos: string = '';
+    let arrowTx: string = '';
 
     if(props.side==='left'){
-      pagePosPreSpring = {
+      sheetPosPreSpring = {
         left: active ? -width : 0,
         top: 0
       }
@@ -33,8 +37,8 @@ function Page(props, ref){
       arrowTx= " scale-y-125 rotate-180 mt-4"
 
     }
-    else if (props.side==='right') {
-      pagePosPreSpring = {
+    else if(props.side==='right') {
+      sheetPosPreSpring = {
         left: active ? width : 0,
         top: 0
       }
@@ -42,8 +46,8 @@ function Page(props, ref){
       backBarPos= "h-full w-12 inset-y-0 left-0 transform hover:scale-x-125 hover:translate-x-0.25"
       arrowTx= " scale-y-125 mt-4"
     }
-    else if (props.side==='bottom') {
-      pagePosPreSpring = {
+    else {
+      sheetPosPreSpring = {
         left: 0,
         top: active ? height : 0,
       }
@@ -52,7 +56,7 @@ function Page(props, ref){
       arrowTx= " scale-y-125 rotate-90 m-auto"
     }
 
-    const pos = useSpring(pagePosPreSpring);
+    const pos = useSpring(sheetPosPreSpring);
 
 
 
@@ -61,7 +65,7 @@ function Page(props, ref){
 
       <div
         className={backBarPos+" items-center cursor-pointer absolute bg-black bg-opacity-5 transition ease-in-out duration-500 hover:bg-opacity-25  "}
-        onClick={toggleActive}
+        onClick={() => toggleActive(!active)}
       >
       <svg
       className={" opacity-80 transform "+ arrowTx}
@@ -82,4 +86,4 @@ function Page(props, ref){
   )
 }
 
-export default forwardRef(Page)
+export default forwardRef(Sheet)
