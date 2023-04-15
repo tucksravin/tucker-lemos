@@ -3755,10 +3755,5 @@ type GatsbyPrismicImageFluid_withWebpFragment = { readonly aspectRatio: number, 
 
 type GatsbyPrismicImageFluid_withWebp_noBase64Fragment = { readonly aspectRatio: number, readonly src: string, readonly srcWebp: string, readonly srcSet: string, readonly srcSetWebp: string, readonly sizes: string };
 
-type SheetListQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SheetListQueryQuery = { readonly allPrismicPag: { readonly nodes: ReadonlyArray<{ readonly data: { readonly bg_color: string | null, readonly primary_color: string | null, readonly secondary_color: string | null, readonly i_am: { readonly text: string | null } | null, readonly sheet_name: { readonly text: string | null } | null } }> } };
-
 
 }

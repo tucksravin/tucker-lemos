@@ -1,30 +1,21 @@
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql} from 'gatsby'
 import * as React from 'react'
 
-
-function SheetList(): React.ReactElement {
-
-    const query = useStaticQuery(graphql`
-     query SheetListQuery{
-        allPrismicPag {
-            nodes {
-                data {
-                    bg_color
-                     i_am {
-                          text
-                     }
-                     primary_color
-                     secondary_color
-                     sheet_name {
-                        text
-                    }
-                }
-            }
+interface AllSheets {
+    sheets: {
+        data: {
+            bg_color: string, 
+        i_am: {text: string}, 
+        primary_color: string, 
+        secondary_color: string, 
+        sheet_name: {text: string}
         }
-        }
-    `)
-    
-    const sheets: any[] = query.allPrismicPag.nodes;
+    }[]
+}
+
+const SheetList: React.FC<AllSheets> = ({sheets}) => { 
+
+    console.log(sheets);
 
     let items: React.ReactElement[] = [];
 
