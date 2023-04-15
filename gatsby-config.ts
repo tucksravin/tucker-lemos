@@ -13,7 +13,12 @@ const routes = [
   }
 ];
 
+
+
 const config: GatsbyConfig = {
+  flags: {
+    DEV_SSR: true
+  },
   siteMetadata: {
     title: `tucker-lemos`,
     siteUrl: `https://www.yourdomain.tld`
