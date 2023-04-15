@@ -26,6 +26,8 @@ type Scalars = {
   GatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData;
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: Record<string, unknown>;
+  /** Text content with rich formatting capabilities using a Prismic format called Structured Text. */
+  PrismicStructuredText: any;
 };
 
 type AVIFOptions = {
@@ -720,6 +722,13 @@ type GatsbyImagePlaceholder =
   | 'none'
   | 'tracedSVG';
 
+type IDQueryOperatorInput = {
+  readonly eq: InputMaybe<Scalars['ID']>;
+  readonly in: InputMaybe<ReadonlyArray<InputMaybe<Scalars['ID']>>>;
+  readonly ne: InputMaybe<Scalars['ID']>;
+  readonly nin: InputMaybe<ReadonlyArray<InputMaybe<Scalars['ID']>>>;
+};
+
 type ImageCropFocus =
   | 17
   | 0
@@ -1162,6 +1171,489 @@ type ImageSharpSortInput = {
   readonly resize: InputMaybe<ImageSharpResizeSortInput>;
 };
 
+type ImgixFixed = {
+  readonly base64: Scalars['String'];
+  readonly height: Scalars['Int'];
+  readonly sizes: Scalars['String'];
+  readonly src: Scalars['String'];
+  readonly srcSet: Scalars['String'];
+  readonly srcSetWebp: Scalars['String'];
+  readonly srcWebp: Scalars['String'];
+  readonly width: Scalars['Int'];
+};
+
+type ImgixFluid = {
+  readonly aspectRatio: Scalars['Float'];
+  readonly base64: Scalars['String'];
+  readonly sizes: Scalars['String'];
+  readonly src: Scalars['String'];
+  readonly srcSet: Scalars['String'];
+  readonly srcSetWebp: Scalars['String'];
+  readonly srcWebp: Scalars['String'];
+};
+
+type ImgixParamsInput = {
+  /** Alias for `pdfAnnotation`. */
+  readonly annotation: InputMaybe<Scalars['Boolean']>;
+  /** Specifies an aspect ratio to maintain when resizing and cropping the image. [See docs](https://docs.imgix.com/apis/url/size/ar). */
+  readonly ar: InputMaybe<Scalars['String']>;
+  /** Applies automatic enhancements to images. [See docs](https://docs.imgix.com/apis/url/auto). */
+  readonly auto: InputMaybe<Scalars['String']>;
+  /** Alias for `blend`. */
+  readonly b: InputMaybe<Scalars['String']>;
+  /** Alias for `blendAlign`. */
+  readonly ba: InputMaybe<Scalars['String']>;
+  /** Alias for `blendAlpha`. */
+  readonly balph: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendCrop`. */
+  readonly bc: InputMaybe<Scalars['String']>;
+  /** Alias for `blendFit`. */
+  readonly bf: InputMaybe<Scalars['String']>;
+  /** Colors the background of padded and partially-transparent images. Default: `fff`. [See docs](https://docs.imgix.com/apis/url/bg). */
+  readonly bg: InputMaybe<Scalars['String']>;
+  /** Alias for `blendH`. */
+  readonly bh: InputMaybe<Scalars['Float']>;
+  /** Specifies the location of the blend image. [See docs](https://docs.imgix.com/apis/url/blending/blend). */
+  readonly blend: InputMaybe<Scalars['String']>;
+  /** Changes the blend alignment relative to the parent image. [See docs](https://docs.imgix.com/apis/url/blending/blend-align). */
+  readonly blendAlign: InputMaybe<Scalars['String']>;
+  /** Changes the alpha of the blend image. Default: `100`. [See docs](https://docs.imgix.com/apis/url/blending/blend-alpha). */
+  readonly blendAlpha: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendColor`. */
+  readonly blendClr: InputMaybe<Scalars['String']>;
+  /** Specifies a color to use when applying the blend. [See docs](https://docs.imgix.com/apis/url/blending/blend-color). */
+  readonly blendColor: InputMaybe<Scalars['String']>;
+  /** Specifies the type of crop for blend images. [See docs](https://docs.imgix.com/apis/url/blending/blend-crop). */
+  readonly blendCrop: InputMaybe<Scalars['String']>;
+  /** Specifies the fit mode for blend images. Default: `clip`. [See docs](https://docs.imgix.com/apis/url/blending/blend-fit). */
+  readonly blendFit: InputMaybe<Scalars['String']>;
+  /** Adjusts the height of the blend image. [See docs](https://docs.imgix.com/apis/url/blending/blend-h). */
+  readonly blendH: InputMaybe<Scalars['Float']>;
+  /** Sets the blend mode for a blend image. Default: `overlay`. [See docs](https://docs.imgix.com/apis/url/blending/blend-mode). */
+  readonly blendMode: InputMaybe<Scalars['String']>;
+  /** Applies padding to the blend image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/blending/blend-pad). */
+  readonly blendPad: InputMaybe<Scalars['Int']>;
+  /** Adjusts the size of the blend image. [See docs](https://docs.imgix.com/apis/url/blending/blend-size). */
+  readonly blendSize: InputMaybe<Scalars['String']>;
+  /** Adjusts the width of the blend image. [See docs](https://docs.imgix.com/apis/url/blending/blend-w). */
+  readonly blendW: InputMaybe<Scalars['Float']>;
+  /** Adjusts the x-offset of the blend image relative to its parent. Default: `0`. [See docs](https://docs.imgix.com/apis/url/blending/blend-x). */
+  readonly blendX: InputMaybe<Scalars['Int']>;
+  /** Adjusts the y-offset of the blend image relative to its parent. Default: `0`. [See docs](https://docs.imgix.com/apis/url/blending/blend-y). */
+  readonly blendY: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendAlign`. */
+  readonly blendalign: InputMaybe<Scalars['String']>;
+  /** Alias for `blendAlpha`. */
+  readonly blendalpha: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendColor`. */
+  readonly blendclr: InputMaybe<Scalars['String']>;
+  /** Alias for `blendColor`. */
+  readonly blendcolor: InputMaybe<Scalars['String']>;
+  /** Alias for `blendCrop`. */
+  readonly blendcrop: InputMaybe<Scalars['String']>;
+  /** Alias for `blendFit`. */
+  readonly blendfit: InputMaybe<Scalars['String']>;
+  /** Alias for `blendH`. */
+  readonly blendh: InputMaybe<Scalars['Float']>;
+  /** Alias for `blendMode`. */
+  readonly blendmode: InputMaybe<Scalars['String']>;
+  /** Alias for `blendPad`. */
+  readonly blendpad: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendSize`. */
+  readonly blendsize: InputMaybe<Scalars['String']>;
+  /** Alias for `blendW`. */
+  readonly blendw: InputMaybe<Scalars['Float']>;
+  /** Alias for `blendX`. */
+  readonly blendx: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendY`. */
+  readonly blendy: InputMaybe<Scalars['Int']>;
+  /** Applies a gaussian blur to an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/stylize/blur). */
+  readonly blur: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendMode`. */
+  readonly bm: InputMaybe<Scalars['String']>;
+  /** Applies a border to an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border). */
+  readonly border: InputMaybe<Scalars['String']>;
+  /** Sets bottom border of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-bottom). */
+  readonly borderBottom: InputMaybe<Scalars['Int']>;
+  /** Sets left border of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-left). */
+  readonly borderLeft: InputMaybe<Scalars['Int']>;
+  /** Sets the outer radius of the image's border in pixels. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-radius). */
+  readonly borderRadius: InputMaybe<Scalars['String']>;
+  /** Sets the inner radius of the image's border in pixels. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-radius-inner). */
+  readonly borderRadiusInner: InputMaybe<Scalars['String']>;
+  /** Sets right border of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-right). */
+  readonly borderRight: InputMaybe<Scalars['Int']>;
+  /** Sets top border of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-top). */
+  readonly borderTop: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendPad`. */
+  readonly bp: InputMaybe<Scalars['Int']>;
+  /** Adjusts the brightness of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/bri). */
+  readonly bri: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendSize`. */
+  readonly bs: InputMaybe<Scalars['String']>;
+  /** Alias for `blendW`. */
+  readonly bw: InputMaybe<Scalars['Float']>;
+  /** Alias for `blendX`. */
+  readonly bx: InputMaybe<Scalars['Int']>;
+  /** Alias for `blendY`. */
+  readonly by: InputMaybe<Scalars['Int']>;
+  /** Sets one or more Client-Hints headers. [See docs](https://docs.imgix.com/apis/url/format/ch). */
+  readonly ch: InputMaybe<Scalars['String']>;
+  /** Specifies the output chroma subsampling rate. Default: `420`. [See docs](https://docs.imgix.com/apis/url/format/chromasub). */
+  readonly chromasub: InputMaybe<Scalars['Int']>;
+  /** Limits the number of unique colors in an image. [See docs](https://docs.imgix.com/apis/url/format/colorquant). */
+  readonly colorquant: InputMaybe<Scalars['Int']>;
+  /** Specifies how many colors to include in a palette-extraction response. Default: `6`. [See docs](https://docs.imgix.com/apis/url/color-palette/colors). */
+  readonly colors: InputMaybe<Scalars['Int']>;
+  /** Adjusts the contrast of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/con). */
+  readonly con: InputMaybe<Scalars['Int']>;
+  /** Specifies the radius value for a rounded corner mask. [See docs](https://docs.imgix.com/apis/url/mask/corner-radius). */
+  readonly cornerRadius: InputMaybe<Scalars['String']>;
+  /** Specifies how to crop an image. [See docs](https://docs.imgix.com/apis/url/size/crop). */
+  readonly crop: InputMaybe<Scalars['String']>;
+  /** Specifies the color space of the output image. [See docs](https://docs.imgix.com/apis/url/format/cs). */
+  readonly cs: InputMaybe<Scalars['String']>;
+  /** Forces a URL to use send-file in its response. [See docs](https://docs.imgix.com/apis/url/format/dl). */
+  readonly dl: InputMaybe<Scalars['String']>;
+  /** Sets the DPI value in the EXIF header. [See docs](https://docs.imgix.com/apis/url/format/dpi). */
+  readonly dpi: InputMaybe<Scalars['Int']>;
+  /** Adjusts the device-pixel ratio of the output image. Default: `1`. [See docs](https://docs.imgix.com/apis/url/dpr). */
+  readonly dpr: InputMaybe<Scalars['Float']>;
+  /** Applies a duotone effect to the source image. [See docs](https://docs.imgix.com/apis/url/stylize/duotone). */
+  readonly duotone: InputMaybe<Scalars['String']>;
+  /** Changes the alpha of the duotone effect atop the source image. Default: `100`. [See docs](https://docs.imgix.com/apis/url/stylize/duotone-alpha). */
+  readonly duotoneAlpha: InputMaybe<Scalars['Int']>;
+  /** Adjusts the exposure of the output image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/exp). */
+  readonly exp: InputMaybe<Scalars['Int']>;
+  /** A Unix timestamp specifying a UTC time. Requests made to this URL after that time will output a 404 status code. [See docs](https://docs.imgix.com/apis/url/expires). */
+  readonly expires: InputMaybe<Scalars['String']>;
+  /** Alias for `fit`. */
+  readonly f: InputMaybe<Scalars['String']>;
+  /** Selects a face to crop to. [See docs](https://docs.imgix.com/apis/url/face-detection/faceindex). */
+  readonly faceindex: InputMaybe<Scalars['Int']>;
+  /** Adjusts padding around a selected face. Default: `1`. [See docs](https://docs.imgix.com/apis/url/face-detection/facepad). */
+  readonly facepad: InputMaybe<Scalars['Float']>;
+  /** Specifies that face data should be included in output when combined with `fm=json`. [See docs](https://docs.imgix.com/apis/url/face-detection/faces). */
+  readonly faces: InputMaybe<Scalars['Int']>;
+  /** Determines how to fill in additional space created by the fit setting. [See docs](https://docs.imgix.com/apis/url/fill/fill). */
+  readonly fill: InputMaybe<Scalars['String']>;
+  /** Sets the fill color for images with additional space created by the fit setting. Default: `fff`. [See docs](https://docs.imgix.com/apis/url/fill/fill-color). */
+  readonly fillColor: InputMaybe<Scalars['String']>;
+  /** Alias for `fillColor`. */
+  readonly fillcolor: InputMaybe<Scalars['String']>;
+  /** Specifies how to map the source image to the output image dimensions. Default: `clip`. [See docs](https://docs.imgix.com/apis/url/size/fit). */
+  readonly fit: InputMaybe<Scalars['String']>;
+  /** Flips an image on a specified axis. [See docs](https://docs.imgix.com/apis/url/rotation/flip). */
+  readonly flip: InputMaybe<Scalars['String']>;
+  /** Changes the format of the output image. [See docs](https://docs.imgix.com/apis/url/format/fm). */
+  readonly fm: InputMaybe<Scalars['String']>;
+  /** Displays crosshairs identifying the location of the set focal point. Default: `false`. [See docs](https://docs.imgix.com/apis/url/focalpoint-crop/fp-debug). */
+  readonly fpDebug: InputMaybe<Scalars['Boolean']>;
+  /** Sets the relative horizontal value for the focal point of an image. [See docs](https://docs.imgix.com/apis/url/focalpoint-crop/fp-x). */
+  readonly fpX: InputMaybe<Scalars['Float']>;
+  /** Sets the relative vertical value for the focal point of an image. [See docs](https://docs.imgix.com/apis/url/focalpoint-crop/fp-y). */
+  readonly fpY: InputMaybe<Scalars['Float']>;
+  /** Sets the relative zoom value for the focal point of an image. [See docs](https://docs.imgix.com/apis/url/focalpoint-crop/fp-z). */
+  readonly fpZ: InputMaybe<Scalars['Float']>;
+  /** Adjusts the gamma of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/gam). */
+  readonly gam: InputMaybe<Scalars['Int']>;
+  /** Sets grid colors for the transparency checkerboard grid. */
+  readonly gridColors: InputMaybe<Scalars['String']>;
+  /** Sets grid size for the transparency checkerboard grid. */
+  readonly gridSize: InputMaybe<Scalars['Int']>;
+  /** Adjusts the height of the output image. [See docs](https://docs.imgix.com/apis/url/size/h). */
+  readonly h: InputMaybe<Scalars['Float']>;
+  /** Alias for `h`. */
+  readonly height: InputMaybe<Scalars['Float']>;
+  /** Adjusts the highlights of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/high). */
+  readonly high: InputMaybe<Scalars['Int']>;
+  /** Applies a half-tone effect to the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/stylize/htn). */
+  readonly htn: InputMaybe<Scalars['Int']>;
+  /** Adjusts the hue of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/hue). */
+  readonly hue: InputMaybe<Scalars['Int']>;
+  /** Alias for `invert`. */
+  readonly inv: InputMaybe<Scalars['Boolean']>;
+  /** Inverts the colors on the source image. Default: `false`. [See docs](https://docs.imgix.com/apis/url/adjustment/invert). */
+  readonly invert: InputMaybe<Scalars['Boolean']>;
+  /** Determine if IPTC data should be passed for JPEG images. */
+  readonly iptc: InputMaybe<Scalars['String']>;
+  /** Specifies that the output image should be a lossless variant. Default: `false`. [See docs](https://docs.imgix.com/apis/url/format/lossless). */
+  readonly lossless: InputMaybe<Scalars['Boolean']>;
+  /** Alias for `mark`. */
+  readonly m: InputMaybe<Scalars['String']>;
+  /** Alias for `markAlign`. */
+  readonly ma: InputMaybe<Scalars['String']>;
+  /** Alias for `markAlpha`. */
+  readonly malph: InputMaybe<Scalars['Int']>;
+  /** Specifies the location of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark). */
+  readonly mark: InputMaybe<Scalars['String']>;
+  /** Changes the watermark alignment relative to the parent image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-align). */
+  readonly markAlign: InputMaybe<Scalars['String']>;
+  /** Changes the alpha of the watermark image. Default: `100`. [See docs](https://docs.imgix.com/apis/url/watermark/mark-alpha). */
+  readonly markAlpha: InputMaybe<Scalars['Int']>;
+  /** Changes base URL of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-base). */
+  readonly markBase: InputMaybe<Scalars['String']>;
+  /** Specifies the fit mode for watermark images. Default: `clip`. [See docs](https://docs.imgix.com/apis/url/watermark/mark-fit). */
+  readonly markFit: InputMaybe<Scalars['String']>;
+  /** Adjusts the height of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-h). */
+  readonly markH: InputMaybe<Scalars['Float']>;
+  /** Applies padding to the watermark image. Default: `5`. [See docs](https://docs.imgix.com/apis/url/watermark/mark-pad). */
+  readonly markPad: InputMaybe<Scalars['Int']>;
+  /** Rotates a watermark or tiled watermarks by a specified number of degrees. Default: `0`. [See docs](https://docs.imgix.com/apis/url/watermark/mark-rot). */
+  readonly markRot: InputMaybe<Scalars['Float']>;
+  /** Adjusts the scale of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-scale). */
+  readonly markScale: InputMaybe<Scalars['Int']>;
+  /** Adds tiled watermark. [See docs](https://docs.imgix.com/apis/url/watermark/mark-tile). */
+  readonly markTile: InputMaybe<Scalars['String']>;
+  /** Adjusts the width of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-w). */
+  readonly markW: InputMaybe<Scalars['Float']>;
+  /** Adjusts the x-offset of the watermark image relative to its parent. [See docs](https://docs.imgix.com/apis/url/watermark/mark-x). */
+  readonly markX: InputMaybe<Scalars['Int']>;
+  /** Adjusts the y-offset of the watermark image relative to its parent. [See docs](https://docs.imgix.com/apis/url/watermark/mark-y). */
+  readonly markY: InputMaybe<Scalars['Int']>;
+  /** Alias for `markAlign`. */
+  readonly markalign: InputMaybe<Scalars['String']>;
+  /** Alias for `markAlpha`. */
+  readonly markalpha: InputMaybe<Scalars['Int']>;
+  /** Alias for `markBase`. */
+  readonly markbase: InputMaybe<Scalars['String']>;
+  /** Alias for `markFit`. */
+  readonly markfit: InputMaybe<Scalars['String']>;
+  /** Alias for `markH`. */
+  readonly markh: InputMaybe<Scalars['Float']>;
+  /** Alias for `markPad`. */
+  readonly markpad: InputMaybe<Scalars['Int']>;
+  /** Alias for `markScale`. */
+  readonly markscale: InputMaybe<Scalars['Int']>;
+  /** Alias for `markTile`. */
+  readonly marktile: InputMaybe<Scalars['String']>;
+  /** Alias for `markW`. */
+  readonly markw: InputMaybe<Scalars['Float']>;
+  /** Alias for `markX`. */
+  readonly markx: InputMaybe<Scalars['Int']>;
+  /** Alias for `markY`. */
+  readonly marky: InputMaybe<Scalars['Int']>;
+  /** Defines the type of mask and specifies the URL if that type is selected. [See docs](https://docs.imgix.com/apis/url/mask). */
+  readonly mask: InputMaybe<Scalars['String']>;
+  /** Colors the background of the transparent mask area of images. Default: `fff`. [See docs](https://docs.imgix.com/apis/url/mask/mask-bg). */
+  readonly maskBg: InputMaybe<Scalars['String']>;
+  /** Alias for `maskBg`. */
+  readonly maskbg: InputMaybe<Scalars['String']>;
+  /** Specifies the maximum height of the output image in pixels. [See docs](https://docs.imgix.com/apis/url/size/max-height). */
+  readonly maxH: InputMaybe<Scalars['Int']>;
+  /** Alias for `maxH`. */
+  readonly maxHeight: InputMaybe<Scalars['Int']>;
+  /** Specifies the maximum width of the output image in pixels. [See docs](https://docs.imgix.com/apis/url/size/max-width). */
+  readonly maxW: InputMaybe<Scalars['Int']>;
+  /** Alias for `maxW`. */
+  readonly maxWidth: InputMaybe<Scalars['Int']>;
+  /** Alias for `markBase`. */
+  readonly mb: InputMaybe<Scalars['String']>;
+  /** Alias for `markFit`. */
+  readonly mf: InputMaybe<Scalars['String']>;
+  /** Alias for `markH`. */
+  readonly mh: InputMaybe<Scalars['Float']>;
+  /** Specifies the minimum height of the output image in pixels. [See docs](https://docs.imgix.com/apis/url/size/min-height). */
+  readonly minH: InputMaybe<Scalars['Int']>;
+  /** Alias for `minH`. */
+  readonly minHeight: InputMaybe<Scalars['Int']>;
+  /** Specifies the minimum width of the output image in pixels. [See docs](https://docs.imgix.com/apis/url/size/min-width). */
+  readonly minW: InputMaybe<Scalars['Int']>;
+  /** Alias for `minW`. */
+  readonly minWidth: InputMaybe<Scalars['Int']>;
+  /** Alias for `monochrome`. */
+  readonly mono: InputMaybe<Scalars['String']>;
+  /** Applies a monochrome effect to the source image. [See docs](https://docs.imgix.com/apis/url/stylize/monochrome). */
+  readonly monochrome: InputMaybe<Scalars['String']>;
+  /** Alias for `markPad`. */
+  readonly mp: InputMaybe<Scalars['Int']>;
+  /** Alias for `markScale`. */
+  readonly ms: InputMaybe<Scalars['Int']>;
+  /** Alias for `markTile`. */
+  readonly mtile: InputMaybe<Scalars['String']>;
+  /** Alias for `markW`. */
+  readonly mw: InputMaybe<Scalars['Float']>;
+  /** Alias for `markX`. */
+  readonly mx: InputMaybe<Scalars['Int']>;
+  /** Alias for `markY`. */
+  readonly my: InputMaybe<Scalars['Int']>;
+  /** Reduces the noise in an image. Default: `20`. [See docs](https://docs.imgix.com/apis/url/noise-reduction/nr). */
+  readonly nr: InputMaybe<Scalars['Int']>;
+  /** Provides a threshold by which to sharpen an image. Default: `20`. [See docs](https://docs.imgix.com/apis/url/noise-reduction/nrs). */
+  readonly nrs: InputMaybe<Scalars['Int']>;
+  /** Alias for `orient`. */
+  readonly or: InputMaybe<Scalars['Int']>;
+  /** Changes the image orientation. [See docs](https://docs.imgix.com/apis/url/rotation/orient). */
+  readonly orient: InputMaybe<Scalars['Int']>;
+  /** Pads an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad). */
+  readonly pad: InputMaybe<Scalars['Int']>;
+  /** Sets bottom padding of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad-bottom). */
+  readonly padBottom: InputMaybe<Scalars['Int']>;
+  /** Sets left padding of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad-left). */
+  readonly padLeft: InputMaybe<Scalars['Int']>;
+  /** Sets right padding of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad-right). */
+  readonly padRight: InputMaybe<Scalars['Int']>;
+  /** Sets top padding of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad-top). */
+  readonly padTop: InputMaybe<Scalars['Int']>;
+  /** Selects a page from a PDF for display. Default: `1`. [See docs](https://docs.imgix.com/apis/url/pdf/page). */
+  readonly page: InputMaybe<Scalars['Int']>;
+  /** Specifies an output format for palette-extraction. [See docs](https://docs.imgix.com/apis/url/color-palette/palette). */
+  readonly palette: InputMaybe<Scalars['String']>;
+  /** Enables or disables PDF annotation. Default: `true`. [See docs](https://docs.imgix.com/apis/url/pdf/pdf-annotation). */
+  readonly pdfAnnotation: InputMaybe<Scalars['Boolean']>;
+  /** Specifies a CSS prefix for all classes in palette-extraction. Default: `image`. [See docs](https://docs.imgix.com/apis/url/color-palette/prefix). */
+  readonly prefix: InputMaybe<Scalars['String']>;
+  /** Applies a pixelation effect to an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/stylize/px). */
+  readonly px: InputMaybe<Scalars['Int']>;
+  /** Adjusts the quality of an output image. Default: `75`. [See docs](https://docs.imgix.com/apis/url/format/q). */
+  readonly q: InputMaybe<Scalars['Int']>;
+  /** Crops an image to a specified rectangle. [See docs](https://docs.imgix.com/apis/url/size/rect). */
+  readonly rect: InputMaybe<Scalars['String']>;
+  /** Rotates an image by a specified number of degrees. Default: `0`. [See docs](https://docs.imgix.com/apis/url/rotation/rot). */
+  readonly rot: InputMaybe<Scalars['Float']>;
+  /** Adjusts the saturation of an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/sat). */
+  readonly sat: InputMaybe<Scalars['Int']>;
+  /** Applies a sepia effect to an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/stylize/sepia). */
+  readonly sepia: InputMaybe<Scalars['Int']>;
+  /** Adjusts the highlights of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/shad). */
+  readonly shad: InputMaybe<Scalars['Float']>;
+  /** Adjusts the sharpness of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/sharp). */
+  readonly sharp: InputMaybe<Scalars['Float']>;
+  /** Alias for `txt`. */
+  readonly t: InputMaybe<Scalars['String']>;
+  /** Alias for `txtAlign`. */
+  readonly ta: InputMaybe<Scalars['String']>;
+  /** Alias for `txtColor`. */
+  readonly tc: InputMaybe<Scalars['String']>;
+  /** Alias for `txtClip`. */
+  readonly tcl: InputMaybe<Scalars['String']>;
+  /** Alias for `txtFont`. */
+  readonly tf: InputMaybe<Scalars['String']>;
+  /** Alias for `txtLine`. */
+  readonly tl: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtPad`. */
+  readonly tp: InputMaybe<Scalars['Int']>;
+  /** Adds checkerboard behind images which support transparency. [See docs](https://docs.imgix.com/apis/url/fill/transparency). */
+  readonly transparency: InputMaybe<Scalars['String']>;
+  /** Trims the source image. [See docs](https://docs.imgix.com/apis/url/trim/trim). */
+  readonly trim: InputMaybe<Scalars['String']>;
+  /** Specifies a trim color on a trim operation. [See docs](https://docs.imgix.com/apis/url/trim/trim-color). */
+  readonly trimColor: InputMaybe<Scalars['String']>;
+  /** Specifies the mean difference on a trim operation. Default: `11`. [See docs](https://docs.imgix.com/apis/url/trim/trim-md). */
+  readonly trimMd: InputMaybe<Scalars['Float']>;
+  /** Pads the area of the source image before trimming. Default: `0`. [See docs](https://docs.imgix.com/apis/url/trim/trim-pad). */
+  readonly trimPad: InputMaybe<Scalars['Int']>;
+  /** Specifies the standard deviation on a trim operation. Default: `10`. [See docs](https://docs.imgix.com/apis/url/trim/trim-sd). */
+  readonly trimSd: InputMaybe<Scalars['Float']>;
+  /** Specifies the tolerance on a trim operation. Default: `0`. [See docs](https://docs.imgix.com/apis/url/trim/trim-tol). */
+  readonly trimTol: InputMaybe<Scalars['Float']>;
+  /** Alias for `trimColor`. */
+  readonly trimcolor: InputMaybe<Scalars['String']>;
+  /** Alias for `trimMd`. */
+  readonly trimmd: InputMaybe<Scalars['Float']>;
+  /** Alias for `trimPad`. */
+  readonly trimpad: InputMaybe<Scalars['Int']>;
+  /** Alias for `trimSd`. */
+  readonly trimsd: InputMaybe<Scalars['Float']>;
+  /** Alias for `trimTol`. */
+  readonly trimtol: InputMaybe<Scalars['Float']>;
+  /** Alias for `txtShad`. */
+  readonly tsh: InputMaybe<Scalars['Float']>;
+  /** Alias for `txtSize`. */
+  readonly tsz: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtTrack`. */
+  readonly tt: InputMaybe<Scalars['Int']>;
+  /** Sets the text string to render. [See docs](https://docs.imgix.com/apis/url/text/txt). */
+  readonly txt: InputMaybe<Scalars['String']>;
+  /** Sets the vertical and horizontal alignment of rendered text relative to the base image. [See docs](https://docs.imgix.com/apis/url/text/txt-align). */
+  readonly txtAlign: InputMaybe<Scalars['String']>;
+  /** Sets the clipping properties of rendered text. Default: `end`. [See docs](https://docs.imgix.com/apis/url/text/txt-clip). */
+  readonly txtClip: InputMaybe<Scalars['String']>;
+  /** Alias for `txtColor`. */
+  readonly txtClr: InputMaybe<Scalars['String']>;
+  /** Specifies the color of rendered text. [See docs](https://docs.imgix.com/apis/url/text/txt-color). */
+  readonly txtColor: InputMaybe<Scalars['String']>;
+  /** Specifies the fit approach for rendered text. [See docs](https://docs.imgix.com/apis/url/text/txt-fit). */
+  readonly txtFit: InputMaybe<Scalars['String']>;
+  /** Selects a font for rendered text. [See docs](https://docs.imgix.com/apis/url/text/txt-font). */
+  readonly txtFont: InputMaybe<Scalars['String']>;
+  /** Sets the leading (line spacing) for rendered text. Only works on the multi-line text endpoint. Default: `0`. [See docs](https://docs.imgix.com/apis/url/typesetting/txt-lead). */
+  readonly txtLead: InputMaybe<Scalars['Int']>;
+  /** Controls the level of ligature substitution. [See docs](https://docs.imgix.com/apis/url/text/txt-lig). */
+  readonly txtLig: InputMaybe<Scalars['Int']>;
+  /** Outlines the rendered text with a specified color. Default: `0`. [See docs](https://docs.imgix.com/apis/url/text/txt-line). */
+  readonly txtLine: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtLineColor`. */
+  readonly txtLineClr: InputMaybe<Scalars['String']>;
+  /** Specifies a text outline color. Default: `fff`. [See docs](https://docs.imgix.com/apis/url/text/txt-line-color). */
+  readonly txtLineColor: InputMaybe<Scalars['String']>;
+  /** Specifies the padding (in device-independent pixels) between a textbox and the edges of the base image. [See docs](https://docs.imgix.com/apis/url/text/txt-pad). */
+  readonly txtPad: InputMaybe<Scalars['Int']>;
+  /** Applies a shadow to rendered text. Default: `0`. [See docs](https://docs.imgix.com/apis/url/text/txt-shad). */
+  readonly txtShad: InputMaybe<Scalars['Float']>;
+  /** Sets the font size of rendered text. Default: `12`. [See docs](https://docs.imgix.com/apis/url/text/txt-size). */
+  readonly txtSize: InputMaybe<Scalars['Int']>;
+  /** Sets the tracking (letter spacing) for rendered text. Only works on the multi-line text endpoint. Default: `0`. [See docs](https://docs.imgix.com/apis/url/typesetting/txt-track). */
+  readonly txtTrack: InputMaybe<Scalars['Int']>;
+  /** Sets the width of rendered text. [See docs](https://docs.imgix.com/apis/url/text/txt-width). */
+  readonly txtWidth: InputMaybe<Scalars['Int']>;
+  /** Sets the horizontal (x) position of the text in pixels relative to the left edge of the base image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/text/txt-x). */
+  readonly txtX: InputMaybe<Scalars['Int']>;
+  /** Sets the vertical (y) position of the text in pixels relative to the top edge of the base image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/text/txt-y). */
+  readonly txtY: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtAlign`. */
+  readonly txtalign: InputMaybe<Scalars['String']>;
+  /** Alias for `txtClip`. */
+  readonly txtclip: InputMaybe<Scalars['String']>;
+  /** Alias for `txtColor`. */
+  readonly txtclr: InputMaybe<Scalars['String']>;
+  /** Alias for `txtColor`. */
+  readonly txtcolor: InputMaybe<Scalars['String']>;
+  /** Alias for `txtFit`. */
+  readonly txtfit: InputMaybe<Scalars['String']>;
+  /** Alias for `txtFont`. */
+  readonly txtfont: InputMaybe<Scalars['String']>;
+  /** Alias for `txtLead`. */
+  readonly txtlead: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtLig`. */
+  readonly txtlig: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtLine`. */
+  readonly txtline: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtLineColor`. */
+  readonly txtlineclr: InputMaybe<Scalars['String']>;
+  /** Alias for `txtLineColor`. */
+  readonly txtlinecolor: InputMaybe<Scalars['String']>;
+  /** Alias for `txtPad`. */
+  readonly txtpad: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtShad`. */
+  readonly txtshad: InputMaybe<Scalars['Float']>;
+  /** Alias for `txtSize`. */
+  readonly txtsize: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtTrack`. */
+  readonly txttrack: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtWidth`. */
+  readonly txtwidth: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtX`. */
+  readonly txtx: InputMaybe<Scalars['Int']>;
+  /** Alias for `txtY`. */
+  readonly txty: InputMaybe<Scalars['Int']>;
+  /** Sharpens the source image using an unsharp mask. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/usm). */
+  readonly usm: InputMaybe<Scalars['Int']>;
+  /** Specifies the radius for an unsharp mask operation. Default: `2.5`. [See docs](https://docs.imgix.com/apis/url/adjustment/usmrad). */
+  readonly usmrad: InputMaybe<Scalars['Float']>;
+  /** Adjusts the vibrance of an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/vib). */
+  readonly vib: InputMaybe<Scalars['Int']>;
+  /** Adjusts the width of the output image. [See docs](https://docs.imgix.com/apis/url/size/w). */
+  readonly w: InputMaybe<Scalars['Float']>;
+  /** Alias for `w`. */
+  readonly width: InputMaybe<Scalars['Float']>;
+};
+
+type ImgixPlaceholder =
+  | 'blurred'
+  | 'dominantColor'
+  | 'none';
+
 type IntQueryOperatorInput = {
   readonly eq: InputMaybe<Scalars['Int']>;
   readonly gt: InputMaybe<Scalars['Int']>;
@@ -1435,11 +1927,659 @@ type PotraceTurnPolicy =
   | 'right'
   | 'white';
 
+type PrismicAllDocumentTypes = PrismicPag;
+
+type PrismicAlternateLanguageType = {
+  readonly document: Maybe<PrismicAllDocumentTypes>;
+  readonly id: Maybe<Scalars['ID']>;
+  readonly lang: Maybe<Scalars['String']>;
+  readonly raw: Maybe<Scalars['JSON']>;
+  readonly type: Maybe<Scalars['String']>;
+  readonly uid: Maybe<Scalars['String']>;
+};
+
+type PrismicAlternateLanguageTypeFieldSelector = {
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly lang: InputMaybe<FieldSelectorEnum>;
+  readonly raw: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
+  readonly uid: InputMaybe<FieldSelectorEnum>;
+};
+
+type PrismicAlternateLanguageTypeFilterInput = {
+  readonly id: InputMaybe<IDQueryOperatorInput>;
+  readonly lang: InputMaybe<StringQueryOperatorInput>;
+  readonly raw: InputMaybe<JSONQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
+  readonly uid: InputMaybe<StringQueryOperatorInput>;
+};
+
+type PrismicAlternateLanguageTypeFilterListInput = {
+  readonly elemMatch: InputMaybe<PrismicAlternateLanguageTypeFilterInput>;
+};
+
+type PrismicAlternateLanguageTypeSortInput = {
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly lang: InputMaybe<SortOrderEnum>;
+  readonly raw: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
+  readonly uid: InputMaybe<SortOrderEnum>;
+};
+
+type PrismicEmbedType = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly parent: Maybe<Node>;
+};
+
+type PrismicEmbedTypeConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<PrismicEmbedTypeEdge>;
+  readonly group: ReadonlyArray<PrismicEmbedTypeGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<PrismicEmbedType>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type PrismicEmbedTypeConnection_distinctArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+};
+
+
+type PrismicEmbedTypeConnection_groupArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type PrismicEmbedTypeConnection_maxArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+};
+
+
+type PrismicEmbedTypeConnection_minArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+};
+
+
+type PrismicEmbedTypeConnection_sumArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+};
+
+type PrismicEmbedTypeEdge = {
+  readonly next: Maybe<PrismicEmbedType>;
+  readonly node: PrismicEmbedType;
+  readonly previous: Maybe<PrismicEmbedType>;
+};
+
+type PrismicEmbedTypeFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+};
+
+type PrismicEmbedTypeFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+};
+
+type PrismicEmbedTypeGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<PrismicEmbedTypeEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<PrismicEmbedTypeGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<PrismicEmbedType>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type PrismicEmbedTypeGroupConnection_distinctArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+};
+
+
+type PrismicEmbedTypeGroupConnection_groupArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type PrismicEmbedTypeGroupConnection_maxArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+};
+
+
+type PrismicEmbedTypeGroupConnection_minArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+};
+
+
+type PrismicEmbedTypeGroupConnection_sumArgs = {
+  field: PrismicEmbedTypeFieldSelector;
+};
+
+type PrismicEmbedTypeSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly parent: InputMaybe<NodeSortInput>;
+};
+
+type PrismicGeoPointType = {
+  readonly latitude: Scalars['Float'];
+  readonly longitude: Scalars['Float'];
+};
+
+type PrismicImageDimensionsType = {
+  readonly height: Scalars['Int'];
+  readonly width: Scalars['Int'];
+};
+
+type PrismicImageThumbnailType = {
+  readonly alt: Maybe<Scalars['String']>;
+  readonly copyright: Maybe<Scalars['String']>;
+  readonly dimensions: Maybe<PrismicImageDimensionsType>;
+  /** Should be used to generate fixed-width images (i.e. the size of the image doesn't change when the size of the browser changes, and are "fixed"). Returns data compatible with gatsby-image. Instead of accessing this data directly, the GatsbySourceImgixFixed fragment should be used. See the project's README for more information. */
+  readonly fixed: Maybe<ImgixFixed>;
+  /** Should be used to generate fluid-width images (i.e. images that change when the size of the browser changes). Returns data compatible with gatsby-image. Instead of accessing this data directly, the GatsbySourceImgixFluid fragment should be used. See the project's README for more information. */
+  readonly fluid: Maybe<ImgixFluid>;
+  readonly gatsbyImageData: Maybe<Scalars['JSON']>;
+  readonly localFile: Maybe<File>;
+  /** A plain imgix URL with the URL and params applied. */
+  readonly url: Maybe<Scalars['String']>;
+};
+
+
+type PrismicImageThumbnailType_fixedArgs = {
+  height: InputMaybe<Scalars['Int']>;
+  imgixParams?: InputMaybe<ImgixParamsInput>;
+  placeholderImgixParams?: InputMaybe<ImgixParamsInput>;
+  quality: InputMaybe<Scalars['Int']>;
+  width?: InputMaybe<Scalars['Int']>;
+};
+
+
+type PrismicImageThumbnailType_fluidArgs = {
+  imgixParams?: InputMaybe<ImgixParamsInput>;
+  maxHeight: InputMaybe<Scalars['Int']>;
+  maxWidth?: InputMaybe<Scalars['Int']>;
+  placeholderImgixParams?: InputMaybe<ImgixParamsInput>;
+  srcSetBreakpoints: InputMaybe<ReadonlyArray<InputMaybe<Scalars['Int']>>>;
+};
+
+
+type PrismicImageThumbnailType_gatsbyImageDataArgs = {
+  aspectRatio: InputMaybe<Scalars['Float']>;
+  backgroundColor: InputMaybe<Scalars['String']>;
+  breakpoints: InputMaybe<ReadonlyArray<InputMaybe<Scalars['Int']>>>;
+  height: InputMaybe<Scalars['Int']>;
+  imgixParams: InputMaybe<ImgixParamsInput>;
+  layout: InputMaybe<GatsbyImageLayout>;
+  outputPixelDensities: InputMaybe<ReadonlyArray<InputMaybe<Scalars['Float']>>>;
+  placeholder: InputMaybe<ImgixPlaceholder>;
+  placeholderImgixParams: InputMaybe<ImgixParamsInput>;
+  sizes: InputMaybe<Scalars['String']>;
+  srcSetMaxWidth?: InputMaybe<Scalars['Int']>;
+  srcSetMinWidth?: InputMaybe<Scalars['Int']>;
+  width: InputMaybe<Scalars['Int']>;
+  widthTolerance?: InputMaybe<Scalars['Float']>;
+};
+
+
+type PrismicImageThumbnailType_urlArgs = {
+  imgixParams?: InputMaybe<ImgixParamsInput>;
+};
+
+type PrismicLinkType = {
+  readonly document: Maybe<PrismicAllDocumentTypes>;
+  readonly id: Maybe<Scalars['ID']>;
+  readonly isBroken: Maybe<Scalars['Boolean']>;
+  readonly lang: Maybe<Scalars['String']>;
+  readonly link_type: Maybe<PrismicLinkTypeEnum>;
+  readonly localFile: Maybe<File>;
+  readonly raw: Maybe<Scalars['JSON']>;
+  readonly size: Maybe<Scalars['Int']>;
+  readonly slug: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly target: Maybe<Scalars['String']>;
+  readonly type: Maybe<Scalars['String']>;
+  readonly uid: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+};
+
+type PrismicLinkTypeEnum =
+  | 'Any'
+  | 'Document'
+  | 'Media'
+  | 'Web';
+
+type PrismicPag = Node & {
+  readonly _previewable: Scalars['ID'];
+  readonly alternate_languages: ReadonlyArray<PrismicAlternateLanguageType>;
+  readonly children: ReadonlyArray<Node>;
+  readonly data: PrismicPagDataType;
+  readonly dataRaw: Scalars['JSON'];
+  readonly first_publication_date: Scalars['Date'];
+  readonly href: Scalars['String'];
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly lang: Scalars['String'];
+  readonly last_publication_date: Scalars['Date'];
+  readonly parent: Maybe<Node>;
+  readonly prismicId: Scalars['ID'];
+  readonly tags: ReadonlyArray<Scalars['String']>;
+  readonly type: Scalars['String'];
+  readonly url: Maybe<Scalars['String']>;
+};
+
+
+type PrismicPag_first_publication_dateArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type PrismicPag_last_publication_dateArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type PrismicPagConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<PrismicPagEdge>;
+  readonly group: ReadonlyArray<PrismicPagGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<PrismicPag>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type PrismicPagConnection_distinctArgs = {
+  field: PrismicPagFieldSelector;
+};
+
+
+type PrismicPagConnection_groupArgs = {
+  field: PrismicPagFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type PrismicPagConnection_maxArgs = {
+  field: PrismicPagFieldSelector;
+};
+
+
+type PrismicPagConnection_minArgs = {
+  field: PrismicPagFieldSelector;
+};
+
+
+type PrismicPagConnection_sumArgs = {
+  field: PrismicPagFieldSelector;
+};
+
+type PrismicPagDataBodyRichText = PrismicSliceType & {
+  readonly id: Scalars['ID'];
+  readonly items: ReadonlyArray<PrismicPagDataBodyRichTextItem>;
+  readonly slice_label: Maybe<Scalars['String']>;
+  readonly slice_type: Scalars['String'];
+};
+
+type PrismicPagDataBodyRichTextItem = {
+  readonly rich_text: Maybe<PrismicStructuredTextType>;
+};
+
+type PrismicPagDataBodySlicesType = PrismicPagDataBodyRichText;
+
+type PrismicPagDataType = {
+  readonly bg_color: Maybe<Scalars['String']>;
+  readonly body: ReadonlyArray<PrismicPagDataBodySlicesType>;
+  readonly i_am: Maybe<PrismicStructuredTextType>;
+  readonly primary_color: Maybe<Scalars['String']>;
+  readonly secondary_color: Maybe<Scalars['String']>;
+  readonly sheet_name: Maybe<PrismicStructuredTextType>;
+  readonly side: Maybe<Scalars['String']>;
+};
+
+type PrismicPagDataTypeFieldSelector = {
+  readonly bg_color: InputMaybe<FieldSelectorEnum>;
+  readonly i_am: InputMaybe<PrismicStructuredTextTypeFieldSelector>;
+  readonly primary_color: InputMaybe<FieldSelectorEnum>;
+  readonly secondary_color: InputMaybe<FieldSelectorEnum>;
+  readonly sheet_name: InputMaybe<PrismicStructuredTextTypeFieldSelector>;
+  readonly side: InputMaybe<FieldSelectorEnum>;
+};
+
+type PrismicPagDataTypeFilterInput = {
+  readonly bg_color: InputMaybe<StringQueryOperatorInput>;
+  readonly i_am: InputMaybe<PrismicStructuredTextTypeFilterInput>;
+  readonly primary_color: InputMaybe<StringQueryOperatorInput>;
+  readonly secondary_color: InputMaybe<StringQueryOperatorInput>;
+  readonly sheet_name: InputMaybe<PrismicStructuredTextTypeFilterInput>;
+  readonly side: InputMaybe<StringQueryOperatorInput>;
+};
+
+type PrismicPagDataTypeSortInput = {
+  readonly bg_color: InputMaybe<SortOrderEnum>;
+  readonly i_am: InputMaybe<PrismicStructuredTextTypeSortInput>;
+  readonly primary_color: InputMaybe<SortOrderEnum>;
+  readonly secondary_color: InputMaybe<SortOrderEnum>;
+  readonly sheet_name: InputMaybe<PrismicStructuredTextTypeSortInput>;
+  readonly side: InputMaybe<SortOrderEnum>;
+};
+
+type PrismicPagEdge = {
+  readonly next: Maybe<PrismicPag>;
+  readonly node: PrismicPag;
+  readonly previous: Maybe<PrismicPag>;
+};
+
+type PrismicPagFieldSelector = {
+  readonly _previewable: InputMaybe<FieldSelectorEnum>;
+  readonly alternate_languages: InputMaybe<PrismicAlternateLanguageTypeFieldSelector>;
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly data: InputMaybe<PrismicPagDataTypeFieldSelector>;
+  readonly dataRaw: InputMaybe<FieldSelectorEnum>;
+  readonly first_publication_date: InputMaybe<FieldSelectorEnum>;
+  readonly href: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly lang: InputMaybe<FieldSelectorEnum>;
+  readonly last_publication_date: InputMaybe<FieldSelectorEnum>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly prismicId: InputMaybe<FieldSelectorEnum>;
+  readonly tags: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
+  readonly url: InputMaybe<FieldSelectorEnum>;
+};
+
+type PrismicPagFilterInput = {
+  readonly _previewable: InputMaybe<IDQueryOperatorInput>;
+  readonly alternate_languages: InputMaybe<PrismicAlternateLanguageTypeFilterListInput>;
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly data: InputMaybe<PrismicPagDataTypeFilterInput>;
+  readonly dataRaw: InputMaybe<JSONQueryOperatorInput>;
+  readonly first_publication_date: InputMaybe<DateQueryOperatorInput>;
+  readonly href: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly lang: InputMaybe<StringQueryOperatorInput>;
+  readonly last_publication_date: InputMaybe<DateQueryOperatorInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly prismicId: InputMaybe<IDQueryOperatorInput>;
+  readonly tags: InputMaybe<StringQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
+};
+
+type PrismicPagGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<PrismicPagEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<PrismicPagGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<PrismicPag>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type PrismicPagGroupConnection_distinctArgs = {
+  field: PrismicPagFieldSelector;
+};
+
+
+type PrismicPagGroupConnection_groupArgs = {
+  field: PrismicPagFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type PrismicPagGroupConnection_maxArgs = {
+  field: PrismicPagFieldSelector;
+};
+
+
+type PrismicPagGroupConnection_minArgs = {
+  field: PrismicPagFieldSelector;
+};
+
+
+type PrismicPagGroupConnection_sumArgs = {
+  field: PrismicPagFieldSelector;
+};
+
+type PrismicPagSortInput = {
+  readonly _previewable: InputMaybe<SortOrderEnum>;
+  readonly alternate_languages: InputMaybe<PrismicAlternateLanguageTypeSortInput>;
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly data: InputMaybe<PrismicPagDataTypeSortInput>;
+  readonly dataRaw: InputMaybe<SortOrderEnum>;
+  readonly first_publication_date: InputMaybe<SortOrderEnum>;
+  readonly href: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly lang: InputMaybe<SortOrderEnum>;
+  readonly last_publication_date: InputMaybe<SortOrderEnum>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly prismicId: InputMaybe<SortOrderEnum>;
+  readonly tags: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
+  readonly url: InputMaybe<SortOrderEnum>;
+};
+
+type PrismicSharedSliceType = {
+  readonly id: Scalars['ID'];
+  readonly slice_label: Maybe<Scalars['String']>;
+  readonly slice_type: Scalars['String'];
+  readonly variation: Scalars['String'];
+  readonly version: Scalars['String'];
+};
+
+type PrismicSliceType = {
+  readonly id: Scalars['ID'];
+  readonly slice_label: Maybe<Scalars['String']>;
+  readonly slice_type: Scalars['String'];
+};
+
+type PrismicStructuredTextQueryOperatorInput = {
+  readonly eq: InputMaybe<Scalars['PrismicStructuredText']>;
+  readonly in: InputMaybe<ReadonlyArray<InputMaybe<Scalars['PrismicStructuredText']>>>;
+  readonly ne: InputMaybe<Scalars['PrismicStructuredText']>;
+  readonly nin: InputMaybe<ReadonlyArray<InputMaybe<Scalars['PrismicStructuredText']>>>;
+};
+
+type PrismicStructuredTextType = {
+  readonly html: Maybe<Scalars['String']>;
+  /** @deprecated This field has been renamed to `richText`. The `richText` field has the same value the `raw` field. */
+  readonly raw: Scalars['PrismicStructuredText'];
+  readonly richText: Scalars['PrismicStructuredText'];
+  readonly text: Maybe<Scalars['String']>;
+};
+
+type PrismicStructuredTextTypeFieldSelector = {
+  readonly html: InputMaybe<FieldSelectorEnum>;
+  readonly raw: InputMaybe<FieldSelectorEnum>;
+  readonly richText: InputMaybe<FieldSelectorEnum>;
+  readonly text: InputMaybe<FieldSelectorEnum>;
+};
+
+type PrismicStructuredTextTypeFilterInput = {
+  readonly html: InputMaybe<StringQueryOperatorInput>;
+  readonly raw: InputMaybe<PrismicStructuredTextQueryOperatorInput>;
+  readonly richText: InputMaybe<PrismicStructuredTextQueryOperatorInput>;
+  readonly text: InputMaybe<StringQueryOperatorInput>;
+};
+
+type PrismicStructuredTextTypeSortInput = {
+  readonly html: InputMaybe<SortOrderEnum>;
+  readonly raw: InputMaybe<SortOrderEnum>;
+  readonly richText: InputMaybe<SortOrderEnum>;
+  readonly text: InputMaybe<SortOrderEnum>;
+};
+
+type PrismicTypePathType = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly kind: Scalars['String'];
+  readonly parent: Maybe<Node>;
+  readonly path: ReadonlyArray<Scalars['String']>;
+  readonly type: Scalars['String'];
+};
+
+type PrismicTypePathTypeConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<PrismicTypePathTypeEdge>;
+  readonly group: ReadonlyArray<PrismicTypePathTypeGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<PrismicTypePathType>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type PrismicTypePathTypeConnection_distinctArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+};
+
+
+type PrismicTypePathTypeConnection_groupArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type PrismicTypePathTypeConnection_maxArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+};
+
+
+type PrismicTypePathTypeConnection_minArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+};
+
+
+type PrismicTypePathTypeConnection_sumArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+};
+
+type PrismicTypePathTypeEdge = {
+  readonly next: Maybe<PrismicTypePathType>;
+  readonly node: PrismicTypePathType;
+  readonly previous: Maybe<PrismicTypePathType>;
+};
+
+type PrismicTypePathTypeFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly kind: InputMaybe<FieldSelectorEnum>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly path: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
+};
+
+type PrismicTypePathTypeFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly kind: InputMaybe<StringQueryOperatorInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly path: InputMaybe<StringQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
+};
+
+type PrismicTypePathTypeGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<PrismicTypePathTypeEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<PrismicTypePathTypeGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<PrismicTypePathType>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type PrismicTypePathTypeGroupConnection_distinctArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+};
+
+
+type PrismicTypePathTypeGroupConnection_groupArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type PrismicTypePathTypeGroupConnection_maxArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+};
+
+
+type PrismicTypePathTypeGroupConnection_minArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+};
+
+
+type PrismicTypePathTypeGroupConnection_sumArgs = {
+  field: PrismicTypePathTypeFieldSelector;
+};
+
+type PrismicTypePathTypeSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly kind: InputMaybe<SortOrderEnum>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly path: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
+};
+
 type Query = {
   readonly allDirectory: DirectoryConnection;
   readonly allFile: FileConnection;
   readonly allImageSharp: ImageSharpConnection;
   readonly allMdx: MdxConnection;
+  readonly allPrismicEmbedType: PrismicEmbedTypeConnection;
+  readonly allPrismicPag: PrismicPagConnection;
+  readonly allPrismicTypePathType: PrismicTypePathTypeConnection;
   readonly allSite: SiteConnection;
   readonly allSiteBuildMetadata: SiteBuildMetadataConnection;
   readonly allSiteFunction: SiteFunctionConnection;
@@ -1449,6 +2589,9 @@ type Query = {
   readonly file: Maybe<File>;
   readonly imageSharp: Maybe<ImageSharp>;
   readonly mdx: Maybe<Mdx>;
+  readonly prismicEmbedType: Maybe<PrismicEmbedType>;
+  readonly prismicPag: Maybe<PrismicPag>;
+  readonly prismicTypePathType: Maybe<PrismicTypePathType>;
   readonly site: Maybe<Site>;
   readonly siteBuildMetadata: Maybe<SiteBuildMetadata>;
   readonly siteFunction: Maybe<SiteFunction>;
@@ -1486,6 +2629,30 @@ type Query_allMdxArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<MdxSortInput>>>;
+};
+
+
+type Query_allPrismicEmbedTypeArgs = {
+  filter: InputMaybe<PrismicEmbedTypeFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<PrismicEmbedTypeSortInput>>>;
+};
+
+
+type Query_allPrismicPagArgs = {
+  filter: InputMaybe<PrismicPagFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<PrismicPagSortInput>>>;
+};
+
+
+type Query_allPrismicTypePathTypeArgs = {
+  filter: InputMaybe<PrismicTypePathTypeFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<PrismicTypePathTypeSortInput>>>;
 };
 
 
@@ -1632,6 +2799,45 @@ type Query_mdxArgs = {
   internal: InputMaybe<InternalFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
   tableOfContents: InputMaybe<JSONQueryOperatorInput>;
+};
+
+
+type Query_prismicEmbedTypeArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  parent: InputMaybe<NodeFilterInput>;
+};
+
+
+type Query_prismicPagArgs = {
+  _previewable: InputMaybe<IDQueryOperatorInput>;
+  alternate_languages: InputMaybe<PrismicAlternateLanguageTypeFilterListInput>;
+  children: InputMaybe<NodeFilterListInput>;
+  data: InputMaybe<PrismicPagDataTypeFilterInput>;
+  dataRaw: InputMaybe<JSONQueryOperatorInput>;
+  first_publication_date: InputMaybe<DateQueryOperatorInput>;
+  href: InputMaybe<StringQueryOperatorInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  lang: InputMaybe<StringQueryOperatorInput>;
+  last_publication_date: InputMaybe<DateQueryOperatorInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  prismicId: InputMaybe<IDQueryOperatorInput>;
+  tags: InputMaybe<StringQueryOperatorInput>;
+  type: InputMaybe<StringQueryOperatorInput>;
+  url: InputMaybe<StringQueryOperatorInput>;
+};
+
+
+type Query_prismicTypePathTypeArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  kind: InputMaybe<StringQueryOperatorInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  path: InputMaybe<StringQueryOperatorInput>;
+  type: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -2524,6 +3730,35 @@ type GatsbyImageSharpFluid_withWebp_noBase64Fragment = { readonly aspectRatio: n
 type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string | null, readonly srcSetWebp: string | null, readonly sizes: string };
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
+
+type GatsbyImgixFixedFragment = { readonly base64: string, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string, readonly srcSetWebp: string };
+
+type GatsbyImgixFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string, readonly srcSetWebp: string };
+
+type GatsbyImgixFluidFragment = { readonly aspectRatio: number, readonly src: string, readonly srcWebp: string, readonly srcSet: string, readonly srcSetWebp: string, readonly sizes: string, readonly base64: string };
+
+type GatsbyImgixFluid_noBase64Fragment = { readonly aspectRatio: number, readonly src: string, readonly srcWebp: string, readonly srcSet: string, readonly srcSetWebp: string, readonly sizes: string };
+
+type GatsbyPrismicImageFixedFragment = { readonly base64: string, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string, readonly srcSetWebp: string };
+
+type GatsbyPrismicImageFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string, readonly srcSetWebp: string };
+
+type GatsbyPrismicImageFixed_withWebpFragment = { readonly base64: string, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string, readonly srcSetWebp: string };
+
+type GatsbyPrismicImageFixed_withWebp_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string, readonly srcSetWebp: string };
+
+type GatsbyPrismicImageFluidFragment = { readonly aspectRatio: number, readonly src: string, readonly srcWebp: string, readonly srcSet: string, readonly srcSetWebp: string, readonly sizes: string, readonly base64: string };
+
+type GatsbyPrismicImageFluid_noBase64Fragment = { readonly aspectRatio: number, readonly src: string, readonly srcWebp: string, readonly srcSet: string, readonly srcSetWebp: string, readonly sizes: string };
+
+type GatsbyPrismicImageFluid_withWebpFragment = { readonly aspectRatio: number, readonly src: string, readonly srcWebp: string, readonly srcSet: string, readonly srcSetWebp: string, readonly sizes: string, readonly base64: string };
+
+type GatsbyPrismicImageFluid_withWebp_noBase64Fragment = { readonly aspectRatio: number, readonly src: string, readonly srcWebp: string, readonly srcSet: string, readonly srcSetWebp: string, readonly sizes: string };
+
+type SheetListQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SheetListQueryQuery = { readonly allPrismicPag: { readonly nodes: ReadonlyArray<{ readonly data: { readonly bg_color: string | null, readonly primary_color: string | null, readonly secondary_color: string | null, readonly i_am: { readonly text: string | null } | null, readonly sheet_name: { readonly text: string | null } | null } }> } };
 
 
 }

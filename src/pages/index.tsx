@@ -1,6 +1,6 @@
 import * as React from "react"
-//import '../styles/global.css'
 import type { HeadFC, PageProps } from "gatsby"
+import SheetList from '../components/SheetList'
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -8,6 +8,10 @@ const IndexPage: React.FC<PageProps> = () => {
      <h1 className="text-xl text-slate-600 text-center p-6">
       Hi
      </h1>
+
+     <div className="container mx-auto p-10">
+        <SheetList />
+     </div>
     </main>
   )
 }
