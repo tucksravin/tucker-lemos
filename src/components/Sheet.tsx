@@ -56,12 +56,21 @@ function Sheet(props: SheetProps, ref: React.Ref<any>){
       arrowTx= " scale-y-125 rotate-90 m-auto"
     }
 
-    const pos = useSpring(sheetPosPreSpring);
+    let pos = useSpring(sheetPosPreSpring);
+    
+    let sheetCSS = {
+      ...pos,
+      backgroundColor: props.bg_color,
+      color: props.primary_color,
+    }
+
 
 
 
   return (
-    <animated.div className={props.tW+" w-screen min-h-screen fixed z-10 pt-4 md:pt-8"} style={pos}>
+    <animated.div className={props.tW+" w-screen min-h-screen fixed z-10 pt-4 md:pt-8"} style={sheetCSS}>
+
+      <h1 className={" text-lg text-center p-6"}>{"I am "+props.i_am.text}</h1>
 
       <div
         className={backBarPos+" items-center cursor-pointer absolute bg-black bg-opacity-5 transition ease-in-out duration-500 hover:bg-opacity-25  "}
